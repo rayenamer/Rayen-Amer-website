@@ -1,0 +1,1591 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rayen Ameur - Interactive Resume</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-black: #0a0a0a;
+            --secondary-black: #1a1a1a;
+            --accent-gold: #d4af37;
+            --light-gold: #f4e4a6;
+            --text-white: #ffffff;
+            --text-gray: #cccccc;
+            --gradient-gold: linear-gradient(135deg, #d4af37, #f4e4a6);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--primary-black);
+            color: var(--text-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary-black) 0%, var(--secondary-black) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="0.5" fill="%23d4af37" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 4px solid var(--accent-gold);
+            margin: 0 auto 2rem;
+            background: var(--gradient-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--primary-black);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.3);
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--gradient-gold);
+            color: var(--primary-black);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--gradient-gold);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: 20px;
+            bottom: 20px;
+            border: 2px solid var(--accent-gold);
+            border-radius: 10px;
+            z-index: -1;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-gray);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .skill-tag {
+            padding: 0.5rem 1rem;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--accent-gold);
+            border-radius: 25px;
+            color: var(--accent-gold);
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: var(--accent-gold);
+            color: var(--primary-black);
+            transform: translateY(-2px);
+        }
+
+        /* Education Section */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .education-card {
+            background: var(--secondary-black);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .education-image {
+            width: 100%;
+            height: 120px;
+            background: var(--gradient-gold);
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-black);
+            font-size: 2rem;
+        }
+
+        .education-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-gold);
+        }
+
+        .education-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+            border-color: var(--accent-gold);
+        }
+
+        .education-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--primary-black);
+            font-size: 1.5rem;
+        }
+
+        .education-card h3 {
+            color: var(--accent-gold);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .education-card .institution {
+            color: var(--text-gray);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .education-card .year {
+            color: var(--accent-gold);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Experience Section */
+        .experience-timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--gradient-gold);
+        }
+
+        .experience-item {
+            position: relative;
+            margin-bottom: 3rem;
+            background: var(--secondary-black);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .experience-image {
+            width: 280px;
+            height: 280px;
+            background: var(--gradient-gold);
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-black);
+            font-size: 1.5rem;
+            float: right;
+            margin-left: 1rem;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -2.5rem;
+            top: 2rem;
+            width: 12px;
+            height: 12px;
+            background: var(--accent-gold);
+            border-radius: 50%;
+            border: 3px solid var(--primary-black);
+        }
+
+        .experience-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.2);
+            border-color: var(--accent-gold);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .experience-item h3 {
+            color: var(--accent-gold);
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-item .company {
+            color: var(--text-gray);
+            font-weight: 500;
+        }
+
+        .experience-item .duration {
+            color: var(--accent-gold);
+            font-size: 0.9rem;
+            font-weight: 600;
+            background: rgba(212, 175, 55, 0.1);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+        }
+
+        .experience-description {
+            color: var(--text-gray);
+            line-height: 1.6;
+            margin-top: 1rem;
+        }
+
+        .experience-description ul {
+            margin-top: 1rem;
+            padding-left: 1.5rem;
+        }
+
+        .experience-description li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--secondary-black);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(212, 175, 55, 0.2);
+            border-color: var(--accent-gold);
+        }
+
+        .project-image {
+            height: 200px;
+            background: var(--gradient-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--primary-black);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .project-card:hover .project-image::before {
+            left: 100%;
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-card h3 {
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .project-description {
+            color: var(--text-gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            padding: 0.3rem 0.8rem;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--accent-gold);
+            border-radius: 15px;
+            color: var(--accent-gold);
+            font-size: 0.8rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            padding: 0.5rem 1rem;
+            background: var(--gradient-gold);
+            color: var(--primary-black);
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background-color: var(--secondary-black);
+            margin: 5% auto;
+            padding: 2rem;
+            border: 1px solid var(--accent-gold);
+            border-radius: 15px;
+            width: 80%;
+            max-width: 600px;
+            position: relative;
+            animation: modalSlideIn 0.3s ease-out;
+        }
+
+        .close {
+            color: var(--accent-gold);
+            float: right;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close:hover {
+            color: var(--light-gold);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .experience-timeline {
+                padding-left: 1rem;
+            }
+
+            .experience-item {
+                margin-left: 1rem;
+                padding: 1.5rem;
+            }
+
+            .experience-image {
+                width: 100px;
+                height: 100px;
+                float: none;
+                margin: 0 auto 1rem auto;
+                display: block;
+            }
+
+            .experience-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.5rem;
+            }
+
+            .experience-description {
+                text-align: left;
+            }
+
+            .section {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 10% auto;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Rayen Ameur</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="profile-image">
+                <i class="fas fa-user"></i>
+            </div>
+            <h1>Rayen Ameur</h1>
+            <p class="subtitle">Project Manager | Data & AI Specialist | Finance & Digital Transformation</p>
+            <a href="#about" class="cta-button">Discover My Journey</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <h2 class="section-title fade-in">About Me</h2>
+        <div class="about-content fade-in">
+            <div class="about-image">
+                <div class="profile-image"
+                    style="width: 300px; height: 300px; font-size: 6rem; background-image: url('https://ik.imagekit.io/qypbatx8h/RayenAmeur.jpeg?updatedAt=1757728242042'); background-size: cover; background-position: center;">
+                    <i class="fas fa-code" style="display: none;"></i>
+                </div>
+            </div>
+            <div class="about-text">
+                <p>I am an AI and Data Specialist with strong project management experience, skilled in developing
+                    scalable software and deploying machine learning solutions. My expertise spans machine learning,
+                    NLP, and time series forecasting, with hands-on deployment using FastAPI, Spring Boot, and
+                    PostgreSQL. I have also built secure, enterprise-grade applications with .NET Core, C#, Angular, and
+                    RESTful APIs under CQRS architecture. With a solid foundation in data engineering, analytics, and
+                    visualization, I bridge technical innovation with business and finance applications to deliver
+                    impact-driven solutions.</p>
+
+                <div class="skills">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Machine Learning</span>
+                    <span class="skill-tag">Deep Learning</span>
+                    <span class="skill-tag">NLP</span>
+                    <span class="skill-tag">Time Series Forecasting</span>
+                    <span class="skill-tag">FastAPI</span>
+                    <span class="skill-tag">Spring Boot</span>
+                    <span class="skill-tag">.NET Core</span>
+                    <span class="skill-tag">C#</span>
+                    <span class="skill-tag">Angular</span>
+                    <span class="skill-tag">RESTful APIs</span>
+                    <span class="skill-tag">CQRS Architecture</span>
+                    <span class="skill-tag">PostgreSQL</span>
+                    <span class="skill-tag">SQL Server</span>
+                    <span class="skill-tag">Data Engineering</span>
+                    <span class="skill-tag">Data Visualization</span>
+                    <span class="skill-tag">Project Management</span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section">
+        <h2 class="section-title fade-in">Education & Certifications</h2>
+        <div class="education-grid fade-in">
+            <div class="education-card">
+                <div class="education-image" style="background-image: url('https://ik.imagekit.io/qypbatx8h/esprit-hover-grid.jpg?updatedAt=1757729763960');">
+         
+                 </div>
+                <h3>Engineering Degree</h3>
+                <p class="institution">Ecole Supérieure Privée d'Ingénierie et de Technologies - ESPRIT</p>
+                <p class="year">2022 - 2027</p>
+                <p class="description">Learning by building projects from idea to launch, sharpening skills in engineering, teamwork, and project delivery. Skills: PHP, SQL and +11 skills</p>
+            </div>
+
+            <div class="education-card">
+                <div class="education-image" style="background-image: url('https://ik.imagekit.io/qypbatx8h/lycee%20pilote%20hammam%20lif.jpg?updatedAt=1757729764880');">
+               
+                </div>
+                <h3>Mathematics Baccalaureate</h3>
+                <p class="institution">Lycée pilote Hammam Lif</p>
+                <p class="year">Sep 2018 - Jun 2022</p>
+                <p class="description">Admitted to Tunisia's top-ranked Pioneer High School (Top 11.4% nationally) and completed an intensive math curriculum focused on logic and problem-solving. Skills: Mathematics and Python</p>
+            </div>
+
+            <div class="education-card">
+                <div class="education-image" style="background-image: url('https://ik.imagekit.io/qypbatx8h/IBM.jpg?updatedAt=1757729764954');">
+               
+                 </div>
+                <h3>Introduction to Computer Vision and Image Processing</h3>
+                <p class="institution">IBM</p>
+                <p class="year">Issued Sep 2025</p>
+            </div>
+
+            <div class="education-card">
+                <div class="education-image" style="background-image: url('https://ik.imagekit.io/qypbatx8h/microsoft.png?updatedAt=1757729763458');">
+                
+                 </div>
+                <h3>Advanced AI and Machine Learning Techniques and Capstone</h3>
+                <p class="institution">Microsoft</p>
+                <p class="year">Issued Aug 2025</p>
+            </div>
+
+            <div class="education-card">
+                <div class="education-image" style="background-image: url('https://ik.imagekit.io/qypbatx8h/udemylogo.png?updatedAt=1757729765260');">
+                
+                 </div>
+                <h3>Explainable Machine Learning (XAI)</h3>
+                <p class="institution">Duke University</p>
+                <p class="year">Issued Aug 2025</p>
+            </div>
+
+            <div class="education-card">
+                <div class="education-image" style="background-image: url('https://ik.imagekit.io/qypbatx8h/IBM.jpg?updatedAt=1757729764954');">
+                
+                 </div>
+                <h3>IBM AI Engineering Specialization</h3>
+                <p class="institution">IBM</p>
+                <p class="year">Issued Aug 2025</p>
+            </div>
+
+            <div class="education-card">
+                <div class="education-image" style="background-image: url('https://ik.imagekit.io/qypbatx8h/udemylogo.png?updatedAt=1757729765260');">
+                
+                 </div>
+                <h3>Automate Everything with Python</h3>
+                <p class="institution">Udemy</p>
+                <p class="year">Issued Feb 2025</p>
+            </div>
+
+            <div class="education-card">
+                <div class="education-image" style="background-image: url('https://ik.imagekit.io/qypbatx8h/udemylogo.png?updatedAt=1757729765260');">
+                
+                 </div>
+                <h3>Build an app with ASPNET Core and Angular from scratch</h3>
+                <p class="institution">Udemy</p>
+                <p class="year">Issued Jan 2025</p>
+            </div>
+
+            <div class="education-card">
+                <div class="education-image" style="background-image: url('https://ik.imagekit.io/qypbatx8h/gomycode.jfif?updatedAt=1757729763918');">
+                   
+                </div>
+                <h3>Python Essentials</h3>
+                <p class="institution">GOMYCODE</p>
+                <p class="year">Issued Oct 2024</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <h2 class="section-title fade-in">Work Experience</h2>
+        <div class="experience-timeline fade-in">
+            <div class="experience-item" onclick="openModal('modal1')">
+                 <div class="experience-image" style="background-image: url('https://ik.imagekit.io/qypbatx8h/data%20specialist%20aiesec.png?updatedAt=1757730521858');">
+        
+                 </div>
+                <div class="experience-header">
+                    <div>
+                        <h3>Data Specialist</h3>
+                        <p class="company">AIESEC</p>
+                    </div>
+                    <span class="duration">Aug 2025 - Present · 2 mos</span>
+                </div>
+                <div class="experience-description">
+                    <p>Ensuring the accuracy, analysis, and visualization of global organizational data to support strategic decision-making, performance tracking, and capacity building across entities.</p>
+                    <ul>
+                        <li>Data Analysis and Engineering for strategic insights</li>
+                        <li>Implementing AI solutions for organizational efficiency</li>
+                        <li>Supporting global performance tracking initiatives</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item" onclick="openModal('modal2')">
+                 <div class="experience-image" style="background-image: url('https://ik.imagekit.io/qypbatx8h/ProjectManager.JPG?updatedAt=1757730639439');">
+            
+                 </div>
+                <div class="experience-header">
+                    <div>
+                        <h3>Project Manager</h3>
+                        <p class="company">Eduhelper · Full-time</p>
+                    </div>
+                    <span class="duration">May 2025 - Sep 2025 · 5 mos</span>
+                </div>
+                <div class="experience-description">
+                    <p>Leading strategic projects across business development, digital transformation, and EdTech solutions to drive expansion across the EMENA region.</p>
+                    <ul>
+                        <li>Managed cross-functional teams for digital transformation initiatives</li>
+                        <li>Developed EdTech solutions for regional market expansion</li>
+                        <li>Coordinated business development strategies across EMENA</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item" onclick="openModal('modal6')">
+                 <div class="experience-image" style="background-image: url('https://ik.imagekit.io/qypbatx8h/businessDeveloper.jpeg?updatedAt=1757730688579');">
+                
+                 </div>
+                <div class="experience-header">
+                    <div>
+                        <h3>Business Developer</h3>
+                        <p class="company">Eduhelper · Part-time</p>
+                    </div>
+                    <span class="duration">Feb 2025 - May 2025 · 4 mos</span>
+                </div>
+                <div class="experience-description">
+                    <p>Prospected partners, secured deals, and built custom web solutions to enhance B2B and B2C visibility, while securing radio appearances and assisting in event management.</p>
+                    <ul>
+                        <li>Developed strategic partnerships and business relationships</li>
+                        <li>Created custom web solutions for enhanced visibility</li>
+                        <li>Secured media appearances and managed events</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item" onclick="openModal('modal3')">
+                 <div class="experience-image" style="background-image: url('https://ik.imagekit.io/qypbatx8h/ai%20engineer%20intern.jpg?updatedAt=1757730735988');">
+              
+                 </div>
+                <div class="experience-header">
+                    <div>
+                        <h3>AI Engineer Intern</h3>
+                        <p class="company">Discovery Intech · Full-time</p>
+                    </div>
+                    <span class="duration">Jul 2025 - Aug 2025 · 2 mos</span>
+                </div>
+                <div class="experience-description">
+                    <p>Developing a scalable AI predictive maintenance system using ML, time series, and NLP for real-time failure prediction and root cause analysis.</p>
+                    <ul>
+                        <li>Built ML models for predictive maintenance using time series forecasting</li>
+                        <li>Implemented NLP for root cause analysis and failure prediction</li>
+                        <li>Deployed solutions using FastAPI, Spring Boot, and PostgreSQL</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item" onclick="openModal('modal4')">
+                 <div class="experience-image" style="background-image: url('https://ik.imagekit.io/qypbatx8h/TeamLeader.jpeg?updatedAt=1757731133734');">
+             
+                 </div>
+                <div class="experience-header">
+                    <div>
+                        <h3>Team Leader</h3>
+                        <p class="company">AIESEC in Tunisia · Full-time</p>
+                    </div>
+                    <span class="duration">Nov 2023 - Jan 2025 · 1 yr 3 mos</span>
+                </div>
+                <div class="experience-description">
+                    <p>Led a team managing international internships, optimized CRM pipelines, and shaped committee strategy for a high-performance culture.</p>
+                    <ul>
+                        <li>Managed international internship programs and partnerships</li>
+                        <li>Optimized CRM systems and performance tracking</li>
+                        <li>Developed strategic initiatives for organizational growth</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item" onclick="openModal('modal7')">
+                 <div class="experience-image" style="background-image: url('https://ik.imagekit.io/qypbatx8h/director%20of%20partnerships.jfif?updatedAt=1757731314008');">
+            
+                 </div>
+                <div class="experience-header">
+                    <div>
+                        <h3>Director of Partnerships</h3>
+                        <p class="company">AIESEC in Tunisia · Full-time</p>
+                    </div>
+                    <span class="duration">Oct 2024 - Dec 2024 · 3 mos</span>
+                </div>
+                <div class="experience-description">
+                    <p>Led partnership strategy for a national job fair, built the event website, ran targeted email campaigns, and secured guest speakers and media coverage to drive startup engagement.</p>
+                    <ul>
+                        <li>Developed comprehensive partnership strategies</li>
+                        <li>Built event websites and managed digital campaigns</li>
+                        <li>Secured high-profile speakers and media coverage</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item" onclick="openModal('modal5')">
+            <div class="experience-image" style="background-image: url('https://ik.imagekit.io/qypbatx8h/software%20engineer%20intern.jpg?updatedAt=1757731415049');">
+                
+                 </div>
+                <div class="experience-header">
+                    <div>
+                        <h3>Software Engineer Intern</h3>
+                        <p class="company">Poulina Group Holding · Full-time</p>
+                    </div>
+                    <span class="duration">Jul 2024 - Aug 2024 · 2 mos</span>
+                </div>
+                <div class="experience-description">
+                    <p>Developed scalable software using .NET Core, C#, and Angular with CQRS and secure RESTful APIs, collaborating with senior developers through code reviews.</p>
+                    <ul>
+                        <li>Built enterprise applications using .NET Core and C#</li>
+                        <li>Implemented CQRS architecture and RESTful APIs</li>
+                        <li>Developed frontend solutions with Angular and TypeScript</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item" onclick="openModal('modal8')">
+            <div class="experience-image" style="background-image: url('https://ik.imagekit.io/qypbatx8h/event%20assistant.png?updatedAt=1757732351337');">
+                
+                 </div>
+                <div class="experience-header">
+                    <div>
+                        <h3>Event Assistant</h3>
+                        <p class="company">Eduhelper · Full-time</p>
+                    </div>
+                    <span class="duration">Apr 2024 - May 2024 · 2 mos</span>
+                </div>
+                <div class="experience-description">
+                    <p>Supported business development, partner outreach, and logistics for the company-organized event.</p>
+                    <ul>
+                        <li>Coordinated event logistics and operations</li>
+                        <li>Supported business development initiatives</li>
+                        <li>Managed partner outreach and communications</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item" onclick="openModal('modal9')">
+            <div class="experience-image" style="background-image: url('https://ik.imagekit.io/qypbatx8h/information%20technology%20intern.png?updatedAt=1757731548338');">
+                
+                 </div>
+                <div class="experience-header">
+                    <div>
+                        <h3>Information Technology Intern</h3>
+                        <p class="company">Poulina Group Holding · Full-time</p>
+                    </div>
+                    <span class="duration">Jul 2023 - Aug 2023 · 2 mos</span>
+                </div>
+                <div class="experience-description">
+                    <p>Explored IT systems, management tools, and enterprise softwares used across departments.</p>
+                    <ul>
+                        <li>Analyzed enterprise IT systems and infrastructure</li>
+                        <li>Evaluated management tools and software solutions</li>
+                        <li>Supported cross-departmental technology initiatives</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item" onclick="openModal('modal10')">
+            <div class="experience-image" style="background-image: url('https://ik.imagekit.io/qypbatx8h/member.jpeg?updatedAt=1757731731419');">
+                
+                 </div>
+                <div class="experience-header">
+                    <div>
+                        <h3>Member</h3>
+                        <p class="company">AIESEC in Tunisia</p>
+                    </div>
+                    <span class="duration">Nov 2022 - Nov 2023 · 1 yr 1 mo</span>
+                </div>
+                <div class="experience-description">
+                    <p>Contributed to team goals through effective communication, sales support, and leadership.</p>
+                    <ul>
+                        <li>Developed communication and leadership skills</li>
+                        <li>Supported sales initiatives and team objectives</li>
+                        <li>Participated in organizational development activities</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <h2 class="section-title fade-in">Featured Projects</h2>
+        <div class="projects-grid fade-in">
+            <div class="project-card" onclick="openModal('project1')">
+                <div class="project-image">
+                <i class="fas fa-users"></i>
+                 </div>
+                <div class="project-content">
+                    <h3>Custom Social Media Platform</h3>
+                    <p class="project-description">A comprehensive social networking platform with messaging, gallery management, and friend request features for seamless social interaction.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">.NET</span>
+                        <span class="tech-tag">Angular</span>
+                        <span class="tech-tag">C#</span>
+                        <span class="tech-tag">TypeScript</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">Live Demo</a>
+                        <a href="#" class="project-link">GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" onclick="openModal('project2')">
+                <div class="project-image">
+                <i class="fas fa-tasks"></i>
+                 </div>
+                <div class="project-content">
+                    <h3>Task Manager Application</h3>
+                    <p class="project-description">Scalable task management system with CQRS architecture for efficient task creation, tracking, and team collaboration.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">.NET</span>
+                        <span class="tech-tag">CQRS</span>
+                        <span class="tech-tag">C#</span>
+                        <span class="tech-tag">SQL Server</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">Live Demo</a>
+                        <a href="#" class="project-link">GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" onclick="openModal('project3')">
+                <div class="project-image">
+                <i class="fas fa-building"></i>
+                 </div>
+                <div class="project-content">
+                    <h3>Center Management System</h3>
+                    <p class="project-description">Educational center management platform with scheduling, resource allocation, and reporting capabilities using CQRS principles.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">.NET</span>
+                        <span class="tech-tag">CQRS</span>
+                        <span class="tech-tag">C#</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">Live Demo</a>
+                        <a href="#" class="project-link">GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" onclick="openModal('project4')">
+                <div class="project-image">
+                <i class="fas fa-python"></i>
+                 </div>
+                <div class="project-content">
+                    <h3>Python Automation Toolkit</h3>
+                    <p class="project-description">Collection of Python scripts for automating repetitive tasks, file management, data extraction, and workflow optimization.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Automation</span>
+                        <span class="tech-tag">Data Processing</span>
+                        <span class="tech-tag">Scripting</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">Live Demo</a>
+                        <a href="#" class="project-link">GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" onclick="openModal('project5')">
+                <div class="project-image">
+                <i class="fas fa-briefcase"></i>
+                 </div>
+                <div class="project-content">
+                    <h3>Work Experience Platform</h3>
+                    <p class="project-description">Professional networking platform for discovering internships and job opportunities with search, profile management, and application tracking.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">.NET</span>
+                        <span class="tech-tag">Angular</span>
+                        <span class="tech-tag">C#</span>
+                        <span class="tech-tag">SQL Server</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">Live Demo</a>
+                        <a href="#" class="project-link">GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" onclick="openModal('project6')">
+                <div class="project-image">
+                <i class="fas fa-globe"></i>
+                 </div>
+                <div class="project-content">
+                    <h3>Global Studies Opportunities Platform</h3>
+                    <p class="project-description">First Tunisian platform for international study programs with program search, application tracking, and admission guidance.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">.NET</span>
+                        <span class="tech-tag">Angular</span>
+                        <span class="tech-tag">C#</span>
+                        <span class="tech-tag">TypeScript</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">Live Demo</a>
+                        <a href="#" class="project-link">GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" onclick="openModal('project7')">
+                <div class="project-image">
+                <i class="fas fa-robot"></i>
+                 </div>
+                <div class="project-content">
+                    <h3>Commercial AI Agent</h3>
+                    <p class="project-description">AI-driven assistant for handling customer inquiries, providing recommendations, and automating customer interactions.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">AI/ML</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">NLP</span>
+                        <span class="tech-tag">Automation</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">Live Demo</a>
+                        <a href="#" class="project-link">GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" onclick="openModal('project8')">
+                <div class="project-image">
+                <i class="fas fa-receipt"></i>
+                 </div>
+                <div class="project-content">
+                    <h3>OCR Model for Receipts</h3>
+                    <p class="project-description">Python-based OCR system for scanning receipts, extracting data, and enabling automated expense tracking and analytics.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">OCR</span>
+                        <span class="tech-tag">Computer Vision</span>
+                        <span class="tech-tag">Data Extraction</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">Live Demo</a>
+                        <a href="#" class="project-link">GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modals -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal1')">&times;</span>
+            <h2 style="color: var(--accent-gold); margin-bottom: 1rem;">Senior Full Stack Developer</h2>
+            <p style="color: var(--text-gray); margin-bottom: 1rem;"><strong>TechCorp Solutions</strong> | 2022 -
+                Present</p>
+            <p style="color: var(--text-gray); line-height: 1.6;">In my current role, I lead the development of
+                enterprise-level applications that serve thousands of users daily. I've been instrumental in modernizing
+                legacy systems and implementing cloud-native solutions that have significantly improved scalability and
+                performance.</p>
+        </div>
+    </div>
+
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal2')">&times;</span>
+            <h2 style="color: var(--accent-gold); margin-bottom: 1rem;">Frontend Developer</h2>
+            <p style="color: var(--text-gray); margin-bottom: 1rem;"><strong>Digital Innovations Inc.</strong> | 2021 -
+                2022</p>
+            <p style="color: var(--text-gray); line-height: 1.6;">During my time at Digital Innovations, I honed my
+                frontend skills and became proficient in modern JavaScript frameworks. I worked closely with design
+                teams to create intuitive user interfaces that enhanced user engagement and satisfaction.</p>
+        </div>
+    </div>
+
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal3')">&times;</span>
+            <h2 style="color: var(--accent-gold); margin-bottom: 1rem;">Junior Web Developer</h2>
+            <p style="color: var(--text-gray); margin-bottom: 1rem;"><strong>StartupHub</strong> | 2020 - 2021</p>
+            <p style="color: var(--text-gray); line-height: 1.6;">My first professional role where I learned the
+                fundamentals of web development in a fast-paced startup environment. This experience taught me the
+                importance of clean code, version control, and collaborative development practices.</p>
+        </div>
+    </div>
+
+    <div id="project1" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('project1')">&times;</span>
+            <h2 style="color: var(--accent-gold); margin-bottom: 1rem;">Custom Social Media Platform</h2>
+            <p style="color: var(--text-gray); line-height: 1.6; margin-bottom: 1rem;">Developed using .NET and Angular, this comprehensive social networking platform provides a complete social interaction experience with modern web technologies.</p>
+            <p style="color: var(--text-gray); line-height: 1.6;"><strong>Key Features:</strong> Messaging system, gallery management, online presence tracking, friend request management, and advanced functionalities to ensure seamless social interaction and user engagement.</p>
+        </div>
+    </div>
+
+    <div id="project2" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('project2')">&times;</span>
+            <h2 style="color: var(--accent-gold); margin-bottom: 1rem;">Task Manager Application</h2>
+            <p style="color: var(--text-gray); line-height: 1.6; margin-bottom: 1rem;">Built with .NET and designed for scalability, this application enables efficient task creation, tracking, and management for both individuals and teams.</p>
+            <p style="color: var(--text-gray); line-height: 1.6;"><strong>Key Features:</strong> CQRS architecture implementation for optimal performance and maintainability, scalable design, team collaboration tools, and comprehensive task management capabilities.</p>
+        </div>
+    </div>
+
+    <div id="project3" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('project3')">&times;</span>
+            <h2 style="color: var(--accent-gold); margin-bottom: 1rem;">Center Management System</h2>
+            <p style="color: var(--text-gray); line-height: 1.6; margin-bottom: 1rem;">Developed using .NET following CQRS principles to separate read and write operations for improved efficiency in managing educational or service centers.</p>
+            <p style="color: var(--text-gray); line-height: 1.6;"><strong>Key Features:</strong> Scheduling management, resource allocation, comprehensive reporting, CQRS architecture for optimal performance, and streamlined operations for educational centers.</p>
+        </div>
+    </div>
+
+    <div id="project4" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('project4')">&times;</span>
+            <h2 style="color: var(--accent-gold); margin-bottom: 1rem;">Python Automation Toolkit</h2>
+            <p style="color: var(--text-gray); line-height: 1.6; margin-bottom: 1rem;">A comprehensive collection of Python scripts designed for automating repetitive tasks and enhancing productivity across various workflows.</p>
+            <p style="color: var(--text-gray); line-height: 1.6;"><strong>Key Features:</strong> File management automation, data extraction scripts, reporting tools, data processing workflows, and productivity-enhancing processes for various business needs.</p>
+        </div>
+    </div>
+
+    <div id="project5" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('project5')">&times;</span>
+            <h2 style="color: var(--accent-gold); margin-bottom: 1rem;">Work Experience Platform</h2>
+            <p style="color: var(--text-gray); line-height: 1.6; margin-bottom: 1rem;">A professional networking and opportunity discovery platform that connects users with internships, jobs, and work opportunities.</p>
+            <p style="color: var(--text-gray); line-height: 1.6;"><strong>Key Features:</strong> User-friendly search functionality, comprehensive profile management, application tracking system, opportunity discovery tools, and professional networking capabilities.</p>
+        </div>
+    </div>
+
+    <div id="project6" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('project6')">&times;</span>
+            <h2 style="color: var(--accent-gold); margin-bottom: 1rem;">Global Studies Opportunities Platform</h2>
+            <p style="color: var(--text-gray); line-height: 1.6; margin-bottom: 1rem;">The first Tunisian platform enabling students to explore international study programs worldwide, built with .NET and Angular to simplify the international study journey.</p>
+            <p style="color: var(--text-gray); line-height: 1.6;"><strong>Key Features:</strong> International program search, application tracking system, admission process guidance, comprehensive study abroad resources, and user-friendly interface for Tunisian students.</p>
+        </div>
+    </div>
+
+    <div id="project7" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('project7')">&times;</span>
+            <h2 style="color: var(--accent-gold); margin-bottom: 1rem;">Commercial AI Agent</h2>
+            <p style="color: var(--text-gray); line-height: 1.6; margin-bottom: 1rem;">An AI-driven assistant designed to revolutionize customer service through intelligent automation and personalized interactions.</p>
+            <p style="color: var(--text-gray); line-height: 1.6;"><strong>Key Features:</strong> Automated inquiry handling, intelligent recommendation system, customer interaction automation, natural language processing, and seamless integration with existing business systems.</p>
+        </div>
+    </div>
+
+    <div id="project8" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('project8')">&times;</span>
+            <h2 style="color: var(--accent-gold); margin-bottom: 1rem;">OCR Model for Receipts</h2>
+            <p style="color: var(--text-gray); line-height: 1.6; margin-bottom: 1rem;">A Python-based OCR system that leverages computer vision technology to digitize and process receipt data for automated expense management.</p>
+            <p style="color: var(--text-gray); line-height: 1.6;"><strong>Key Features:</strong> Receipt scanning and data extraction, automated expense tracking, analytics and reporting, data processing workflows, and integration capabilities for expense management systems.</p>
+        </div>
+    </div>
+
+    <!-- Modal 4 -->
+    <div id="modal4" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal4')">&times;</span>
+            <h2>Team Leader - AIESEC in Tunisia</h2>
+            <p><strong>Duration:</strong> Nov 2023 - Jan 2025 · 1 yr 3 mos</p>
+            <p><strong>Type:</strong> Full-time</p>
+            <p><strong>Location:</strong> Tunisia · Hybrid</p>
+            <p><strong>Description:</strong> Led a team managing international internships, optimized CRM pipelines, and shaped committee strategy for a high-performance culture.</p>
+            <p><strong>Skills:</strong></p>
+            <ul>
+                <li>Project Management</li>
+                <li>Key Performance Indicators</li>
+                <li>Customer Relationship Management (CRM)</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Modal 5 -->
+    <div id="modal5" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal5')">&times;</span>
+            <h2>Software Engineer Intern - Poulina Group Holding</h2>
+            <p><strong>Duration:</strong> Jul 2024 - Aug 2024 · 2 mos</p>
+            <p><strong>Type:</strong> Full-time</p>
+            <p><strong>Location:</strong> On-site</p>
+            <p><strong>Description:</strong> Developed scalable software using .NET Core, C#, and Angular with CQRS and secure RESTful APIs, collaborating with senior developers through code reviews.</p>
+            <p><strong>Skills:</strong></p>
+            <ul>
+                <li>Git</li>
+                <li>SQL Server Management Studio</li>
+                <li>TypeScript</li>
+                <li>Angular</li>
+                <li>C#</li>
+                <li>.NET framework</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Modal 6 -->
+    <div id="modal6" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal6')">&times;</span>
+            <h2>Business Developer - Eduhelper</h2>
+            <p><strong>Duration:</strong> Feb 2025 - May 2025 · 4 mos</p>
+            <p><strong>Type:</strong> Part-time</p>
+            <p><strong>Location:</strong> Tunis, Tunisia</p>
+            <p><strong>Description:</strong> Prospected partners, secured deals, and built custom web solutions to enhance B2B and B2C visibility, while securing radio appearances and assisting in event management.</p>
+            <p><strong>Skills:</strong></p>
+            <ul>
+                <li>Business Development</li>
+                <li>Partner Development</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Modal 7 -->
+    <div id="modal7" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal7')">&times;</span>
+            <h2>Director of Partnerships - AIESEC in Tunisia</h2>
+            <p><strong>Duration:</strong> Oct 2024 - Dec 2024 · 3 mos</p>
+            <p><strong>Type:</strong> Full-time</p>
+            <p><strong>Description:</strong> Led partnership strategy for a national job fair, built the event website, ran targeted email campaigns, and secured guest speakers and media coverage to drive startup engagement.</p>
+            <p><strong>Skills:</strong></p>
+            <ul>
+                <li>Business Development</li>
+                <li>Partner Development</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Modal 8 -->
+    <div id="modal8" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal8')">&times;</span>
+            <h2>Event Assistant - Eduhelper</h2>
+            <p><strong>Duration:</strong> Apr 2024 - May 2024 · 2 mos</p>
+            <p><strong>Type:</strong> Full-time</p>
+            <p><strong>Location:</strong> Hybrid</p>
+            <p><strong>Description:</strong> Supported business development, partner outreach, and logistics for the company-organized event.</p>
+            <p><strong>Skills:</strong></p>
+            <ul>
+                <li>Business Development</li>
+                <li>Event Coordination</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Modal 9 -->
+    <div id="modal9" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal9')">&times;</span>
+            <h2>Information Technology Intern - Poulina Group Holding</h2>
+            <p><strong>Duration:</strong> Jul 2023 - Aug 2023 · 2 mos</p>
+            <p><strong>Type:</strong> Full-time</p>
+            <p><strong>Location:</strong> Gouvernorat Tunis, Tunisie · On-site</p>
+            <p><strong>Description:</strong> Explored IT systems, management tools, and enterprise softwares used across departments.</p>
+            <p><strong>Skills:</strong></p>
+            <ul>
+                <li>Information Technology</li>
+                <li>Enterprise Software</li>
+                <li>System Analysis</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Modal 10 -->
+    <div id="modal10" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal10')">&times;</span>
+            <h2>Member - AIESEC in Tunisia</h2>
+            <p><strong>Duration:</strong> Nov 2022 - Nov 2023 · 1 yr 1 mo</p>
+            <p><strong>Location:</strong> Tunisia · Hybrid</p>
+            <p><strong>Description:</strong> Contributed to team goals through effective communication, sales support, and leadership.</p>
+            <p><strong>Skills:</strong></p>
+            <ul>
+                <li>Communication</li>
+                <li>Sales</li>
+                <li>Leadership</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', function () {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(10, 10, 10, 0.98)';
+            } else {
+                navbar.style.background = 'rgba(10, 10, 10, 0.95)';
+            }
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Modal functions
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function (event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Profile image click animation
+        document.querySelector('.hero .profile-image').addEventListener('click', function () {
+            this.style.transform = 'scale(1.1) rotate(360deg)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 600);
+        });
+
+        // Typing effect for hero subtitle
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        // Initialize typing effect after page load
+        window.addEventListener('load', function () {
+            setTimeout(() => {
+                const subtitle = document.querySelector('.hero .subtitle');
+                const originalText = subtitle.textContent;
+                typeWriter(subtitle, originalText, 80);
+            }, 1000);
+        });
+
+        // Add hover effects to cards
+        document.querySelectorAll('.education-card, .project-card').forEach(card => {
+            card.addEventListener('mouseenter', function () {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+
+            card.addEventListener('mouseleave', function () {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', function () {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            const rate = scrolled * -0.5;
+            hero.style.transform = `translateY(${rate}px)`;
+        });
+
+        // Add loading animation
+        window.addEventListener('load', function () {
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.transition = 'opacity 0.5s ease';
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+
+</html>
