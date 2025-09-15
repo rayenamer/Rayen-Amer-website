@@ -180,6 +180,52 @@
             box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
         }
 
+        /* Social Links Styles */
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            justify-content: flex-start;
+        }
+
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .linkedin-btn {
+            background: #0077b5;
+            color: white;
+        }
+
+        .linkedin-btn:hover {
+            background: #005885;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 119, 181, 0.3);
+        }
+
+        .github-btn {
+            background: #333;
+            color: white;
+        }
+
+        .github-btn:hover {
+            background: #24292e;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(51, 51, 51, 0.3);
+        }
+
+        .social-btn i {
+            font-size: 1.1rem;
+        }
+
         /* GitHub Link Styles */
         .github-link:hover {
             transform: translateY(-2px);
@@ -953,7 +999,18 @@
 
 In tech, I build full-stack apps with .NET and Angular, web or mobile. I’m into blockchain and AI ; from data to models to evaluation.
 
-I study Financial IT and I’m here to make a big impact in the industry.</p>
+I study Financial IT and I'm here to make a big impact in the industry.</p>
+                
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/rayen-ameur-10000s000" target="_blank" class="social-btn linkedin-btn">
+                        <i class="fab fa-linkedin-in"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://github.com/rayenamer" target="_blank" class="social-btn github-btn">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                </div>
 
                <div class="skills">
     <!-- AI & Data -->
