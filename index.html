@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rayen Ameur</title>
     <link rel="icon"
-        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23d4af37'/%3E%3Ctext x='50' y='70' font-family='Inter,sans-serif' font-size='60' font-weight='bold' text-anchor='middle' fill='%23000'%3ER%3C/text%3E%3C/svg%3E"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23CCCCCC'/%3E%3Ctext x='50' y='70' font-family='Inter,sans-serif' font-size='60' font-weight='bold' text-anchor='middle' fill='%23000'%3ER%3C/text%3E%3C/svg%3E"
         type="image/svg+xml">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link
@@ -20,13 +20,13 @@
         }
 
         :root {
-            --primary-black: #0a0a0a;
-            --secondary-black: #1a1a1a;
-            --accent-gold: #d4af37;
-            --light-gold: #f4e4a6;
+            --primary-black: #003366;
+            --secondary-black: #003366;
+            --accent-gold: #CCCCCC;
+            --light-gold: #CCCCCC;
             --text-white: #ffffff;
-            --text-gray: #cccccc;
-            --gradient-gold: linear-gradient(135deg, #d4af37, #f4e4a6);
+            --text-gray: #CCCCCC;
+            --gradient-gold: linear-gradient(135deg, #CCCCCC, #CCCCCC);
         }
 
         body {
@@ -42,7 +42,7 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(10, 10, 10, 0.95);
+            background: #003366;
             backdrop-filter: blur(10px);
             z-index: 1000;
             padding: 1rem 0;
@@ -116,7 +116,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="0.5" fill="%23d4af37" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="0.5" fill="%23CCCCCC" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
             opacity: 0.3;
         }
 
@@ -980,31 +980,38 @@
                 <li><a href="#education">Education</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#projects">Projects</a></li>
-                <li><a href="#gallery">gallery</a></li>
+                <li><a href="#gallery">Gallery</a></li>
             </ul>
         </div>
     </nav>
 
-
     <!-- About Section -->
     <section id="about" class="section">
         <h2 class="section-title fade-in">Rayen Ameur</h2>
+
         <div class="about-content fade-in">
-            <div class="about-image">
-                <div class="profile-image"
-                    style="width: 100%; max-width: 300px; height: auto; aspect-ratio: 1/1; font-size: 6rem; background-image: url('https://ik.imagekit.io/qypbatx8h/RayenAmeur.jpeg?updatedAt=1757728242042'); background-size: cover; background-position: center; margin: 0 auto;">
+            <div class="about-image" style="display:flex;justify-content:center;align-items:center;padding:0 1rem;">
+            <div class="profile-card"
+                 style="width:100%;max-width:420px;border-radius:14px;overflow:hidden;border:4px solid var(--accent-gold);box-shadow:0 18px 40px rgba(0,0,0,0.45);position:relative;min-height:280px;background:#111;">
+                <img
+                src="https://ik.imagekit.io/ucv0td5oa/Rayen_Ameur%20-%20Modifi%C3%A9.jpg"
+                alt="Rayen Ameur"
+                style="width:100%;height:100%;object-fit:cover;display:block;">
+                <div style="position:absolute;left:0;right:0;bottom:0;padding:1rem 1.25rem;background:linear-gradient(180deg,rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 60%);"></div>
+                <div style="position:absolute;left:1.25rem;bottom:1.25rem;color:var(--text-white);text-align:left;">
+                
                 </div>
-                <i class="fas fa-code" style="display: none;"></i>
             </div>
-        </div>
+            </div>
         <div class="about-text">
-            <p>I’m Rayen Amer. I run my projects end to end ; idea, build, business, product. I’ve worked on
-                international exchange and education programs, from events to partnerships and consulting.
+            <p>I am a big fan of money, i like it. 
+                So i am studying fintech: to apply machine learning, deep learning, data engineering, and software development in finance.
 
-                In tech, I build full-stack apps with .NET and Angular, web or mobile. I’m into blockchain and AI ; from
-                data to models to evaluation.
+                </p>
+            <p>You will need me as a: Financial Data Analyst - Quant ML & Deep Learning Engineer - Financial Software Engineer
 
-                I study Financial IT and I'm here to make a big impact in the industry.</p>
+           </p>
+           <p> I also get business done and figure thing out🤓</p>
 
             <div class="social-links">
                 <a href="https://www.linkedin.com/in/rayen-ameur-10000s000" target="_blank"
@@ -1087,13 +1094,33 @@
                     Python</p>
             </div>
 
+
+            <div class="education-card">
+                <div class="education-image"
+                    style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtEb4lhHwx0d_CLRB2qMukPlsJKMWFP24w9Q&s');">
+                </div>
+                <h3>SAP Technology Consultant Specialization</h3>
+                <p class="institution"> SAP </p>
+                <p class="year">Dec 2025</p>
+            </div>
+            
+
+            <div class="education-card">
+                <div class="education-image"
+                    style="background-image: url('https://d92mrp7hetgfk.cloudfront.net/images/sites/misc/u_of_pennsylvania-1/standard.png?1548464188');">
+                </div>
+                <h3>Introduction to Corporate Finance</h3>
+                <p class="institution"> University of Pennsylvania </p>
+                <p class="year">Dec 2025</p>
+            </div>
+            
             <div class="education-card">
                 <div class="education-image"
                     style="background-image: url('https://images.yourstory.com/cs/images/companies/Boord-1591260240771.png?fm=auto&ar=1:1&mode=fill&fill=solid&fill-color=fff');">
                 </div>
                 <h3>Learn SAP ABAP Fundamentals and Core Programming Concepts</h3>
                 <p class="institution">Board Infinity</p>
-                <p class="year">Issued Oct 2025</p>
+                <p class="year">Oct 2025</p>
             </div>
 
             <div class="education-card">
@@ -1102,7 +1129,7 @@
                 </div>
                 <h3>Blockchain Specialization</h3>
                 <p class="institution">University at Buffalo</p>
-                <p class="year">Issued Sep 2025</p>
+                <p class="year">Sep 2025</p>
             </div>
 
             <div class="education-card">
@@ -1112,7 +1139,7 @@
                 </div>
                 <h3>Introduction to Computer Vision and Image Processing</h3>
                 <p class="institution">IBM</p>
-                <p class="year">Issued Sep 2025</p>
+                <p class="year">Sep 2025</p>
             </div>
 
             <div class="education-card">
@@ -1122,7 +1149,7 @@
                 </div>
                 <h3>Advanced AI and Machine Learning Techniques and Capstone</h3>
                 <p class="institution">Microsoft</p>
-                <p class="year">Issued Aug 2025</p>
+                <p class="year">Aug 2025</p>
             </div>
 
             <div class="education-card">
@@ -1132,7 +1159,7 @@
                 </div>
                 <h3>Explainable Machine Learning (XAI)</h3>
                 <p class="institution">Duke University</p>
-                <p class="year">Issued Aug 2025</p>
+                <p class="year">Aug 2025</p>
             </div>
 
             <div class="education-card">
@@ -1142,7 +1169,7 @@
                 </div>
                 <h3>IBM AI Engineering Specialization</h3>
                 <p class="institution">IBM</p>
-                <p class="year">Issued Aug 2025</p>
+                <p class="year">Aug 2025</p>
             </div>
 
             <div class="education-card">
@@ -1152,7 +1179,7 @@
                 </div>
                 <h3>Automate Everything with Python</h3>
                 <p class="institution">Udemy</p>
-                <p class="year">Issued Feb 2025</p>
+                <p class="year">Feb 2025</p>
             </div>
 
             <div class="education-card">
@@ -1162,7 +1189,7 @@
                 </div>
                 <h3>Build an app with ASPNET Core and Angular from scratch</h3>
                 <p class="institution">Udemy</p>
-                <p class="year">Issued Jan 2025</p>
+                <p class="year">Jan 2025</p>
             </div>
 
             <div class="education-card">
@@ -1172,7 +1199,7 @@
                 </div>
                 <h3>Python Essentials</h3>
                 <p class="institution">GOMYCODE</p>
-                <p class="year">Issued Oct 2024</p>
+                <p class="year">Oct 2024</p>
             </div>
         </div>
     </section>
@@ -1220,34 +1247,14 @@
                         <h3>Project Manager</h3>
                         <p class="company">Eduhelper · Full-time</p>
                     </div>
-                    <span class="duration">May 2025 - Sep 2025 · 5 mos</span>
+                    <span class="duration">Feb 2025 - Sep 2025 · 5 mos</span>
                 </div>
                 <div class="experience-description">
-                    <p>Leading strategic projects across business development, digital transformation, and EdTech
-                        solutions to drive expansion across the EMENA region.</p>
+                    <p>• Leading business development projects and an international experience platform project..</p>
                     <ul>
                         <li>Managed cross-functional teams for digital transformation initiatives</li>
                         <li>Developed EdTech solutions for regional market expansion</li>
                         <li>Coordinated business development strategies across EMENA</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="experience-item" onclick="openModal('modal6')">
-                <div class="experience-header">
-                    <div>
-                        <h3>Business Developer</h3>
-                        <p class="company">Eduhelper · Part-time</p>
-                    </div>
-                    <span class="duration">Feb 2025 - May 2025 · 4 mos</span>
-                </div>
-                <div class="experience-description">
-                    <p>Prospected partners, secured deals, and built custom web solutions to enhance B2B and B2C
-                        visibility, while securing radio appearances and assisting in event management.</p>
-                    <ul>
-                        <li>Developed strategic partnerships and business relationships</li>
-                        <li>Created custom web solutions for enhanced visibility</li>
-                        <li>Secured media appearances and managed events</li>
                     </ul>
                 </div>
             </div>
@@ -1290,25 +1297,6 @@
                 </div>
             </div>
 
-            <div class="experience-item" onclick="openModal('modal7')">
-                <div class="experience-header">
-                    <div>
-                        <h3>Director of Partnerships</h3>
-                        <p class="company">AIESEC in Tunisia · Full-time</p>
-                    </div>
-                    <span class="duration">Oct 2024 - Dec 2024 · 3 mos</span>
-                </div>
-                <div class="experience-description">
-                    <p>Led partnership strategy for a national job fair, built the event website, ran targeted email
-                        campaigns, and secured guest speakers and media coverage to drive startup engagement.</p>
-                    <ul>
-                        <li>Developed comprehensive partnership strategies</li>
-                        <li>Built event websites and managed digital campaigns</li>
-                        <li>Secured high-profile speakers and media coverage</li>
-                    </ul>
-                </div>
-            </div>
-
             <div class="experience-item" onclick="openModal('modal5')">
                 <div class="experience-header">
                     <div>
@@ -1328,25 +1316,6 @@
                 </div>
             </div>
 
-            <div class="experience-item" onclick="openModal('modal8')">
-                <div class="experience-header">
-                    <div>
-                        <h3>Event Assistant</h3>
-                        <p class="company">Eduhelper · Full-time</p>
-                    </div>
-                    <span class="duration">Apr 2024 - May 2024 · 2 mos</span>
-                </div>
-                <div class="experience-description">
-                    <p>Supported business development, partner outreach, and logistics for the company-organized event.
-                    </p>
-                    <ul>
-                        <li>Coordinated event logistics and operations</li>
-                        <li>Supported business development initiatives</li>
-                        <li>Managed partner outreach and communications</li>
-                    </ul>
-                </div>
-            </div>
-
             <div class="experience-item" onclick="openModal('modal9')">
                 <div class="experience-header">
                     <div>
@@ -1361,24 +1330,6 @@
                         <li>Analyzed enterprise IT systems and infrastructure</li>
                         <li>Evaluated management tools and software solutions</li>
                         <li>Supported cross-departmental technology initiatives</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="experience-item" onclick="openModal('modal10')">
-                <div class="experience-header">
-                    <div>
-                        <h3>Member</h3>
-                        <p class="company">AIESEC in Tunisia</p>
-                    </div>
-                    <span class="duration">Nov 2022 - Nov 2023 · 1 yr 1 mo</span>
-                </div>
-                <div class="experience-description">
-                    <p>Contributed to team goals through effective communication, sales support, and leadership.</p>
-                    <ul>
-                        <li>Developed communication and leadership skills</li>
-                        <li>Supported sales initiatives and team objectives</li>
-                        <li>Participated in organizational development activities</li>
                     </ul>
                 </div>
             </div>
@@ -1593,12 +1544,167 @@
                         </div>
                     </div>
                 </div>
+                <!--*****************************************************************-->
+
+                <!--*****************************************************************-->
+
+                <!--*****************************************************************-->
+                <div class="project-card" onclick="openModal('project9')">
+    <div class="project-image">
+        <img src="https://miro.medium.com/v2/resize:fit:1400/1*bhFifratH9DjKqMBTeQG5A.gif"
+        alt="Neural Networks Research" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+    <div class="project-content">
+        <h3>Research in Neural Networks & Convolutional Architectures</h3>
+        <p class="project-description">Conducted applied research on neural network architectures using Python and PyTorch, focusing on CNNs for image classification with FashionMNIST and anime datasets.</p>
+        <div class="project-tech">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">PyTorch</span>
+            <span class="tech-tag">CNNs</span>
+            <span class="tech-tag">Computer Vision</span>
+        </div>
+        <div class="project-links">
+            <a href="#" class="project-link">Live Demo</a>
+            <a href="#" class="project-link">GitHub</a>
+        </div>
+    </div>
+</div>
+
+<div class="project-card" onclick="openModal('project10')">
+    <div class="project-image">
+        <img src="https://miro.medium.com/v2/resize:fit:1200/1*BKKVIa--1-GMAycAWTmcUA.gif"
+        alt="Deep Learning Research" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+    <div class="project-content">
+        <h3>Deep Learning & Neural Network Modeling with PyTorch</h3>
+        <p class="project-description">Applied research on deep learning methodologies including wine quality classification and esports match prediction, emphasizing model interpretability and performance analysis.</p>
+        <div class="project-tech">
+            <span class="tech-tag">PyTorch</span>
+            <span class="tech-tag">Deep Learning</span>
+            <span class="tech-tag">Neural Networks</span>
+            <span class="tech-tag">Model Optimization</span>
+        </div>
+        <div class="project-links">
+            <a href="#" class="project-link">Live Demo</a>
+            <a href="#" class="project-link">GitHub</a>
+        </div>
+    </div>
+</div>
+
+<div class="project-card" onclick="openModal('project11')">
+    <div class="project-image">
+        <img src="https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0681d04f-0cd6-45a7-b1f1-a37f9269d01d_1116x1126.gif"
+        alt="Generative AI Research" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+    <div class="project-content">
+        <h3>Generative AI & Transformer NLP Research</h3>
+        <p class="project-description">Completed IBM specialization in Generative AI and Transformers. Built scalable NLP pipelines with modern LLMs, BERT pre-training, and transformer-based classification.</p>
+        <div class="project-tech">
+            <span class="tech-tag">Transformers</span>
+            <span class="tech-tag">NLP</span>
+            <span class="tech-tag">BERT</span>
+            <span class="tech-tag">LLMs</span>
+        </div>
+        <div class="project-links">
+            <a href="#" class="project-link">Live Demo</a>
+            <a href="#" class="project-link">GitHub</a>
+        </div>
+    </div>
+</div>
+
+<div class="project-card" onclick="openModal('project12')">
+    <div class="project-image">
+        <img src="https://media.licdn.com/dms/image/v2/D5622AQF6PmPXW8Jnlw/feedshare-shrink_800/B56ZaqSHxSHUAg-/0/1746613610565?e=2147483647&v=beta&t=jpt8mUqFcahbiZnioPwymkq_9M6R--2IzZbiplC_5Hc"
+        alt="GPT Fine-Tuning" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+    <div class="project-content">
+        <h3>Advanced GPT & Transformer Fine-Tuning</h3>
+        <p class="project-description">Implemented parameter-efficient fine-tuning with LoRA and adapter layers using PyTorch and HuggingFace for production-ready LLM deployments.</p>
+        <div class="project-tech">
+            <span class="tech-tag">PyTorch</span>
+            <span class="tech-tag">HuggingFace</span>
+            <span class="tech-tag">LoRA</span>
+            <span class="tech-tag">Fine-Tuning</span>
+        </div>
+        <div class="project-links">
+            <a href="#" class="project-link">Live Demo</a>
+            <a href="#" class="project-link">GitHub</a>
+        </div>
+    </div>
+</div>
+
+<div class="project-card" onclick="openModal('project13')">
+    <div class="project-image">
+        <img src="https://substackcdn.com/image/fetch/$s_!xZLI!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9764beac-a786-4305-9a47-ec050b0ebef6_1060x308.gif"
+        alt="LLM Fine-Tuning" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+    <div class="project-content">
+        <h3>Advanced LLM Fine-Tuning Techniques</h3>
+        <p class="project-description">Engineered comprehensive workflows for LLM fine-tuning including DPO, PPO, and RLHF for optimizing models for specific applications.</p>
+        <div class="project-tech">
+            <span class="tech-tag">DPO</span>
+            <span class="tech-tag">PPO</span>
+            <span class="tech-tag">RLHF</span>
+            <span class="tech-tag">LLM Optimization</span>
+        </div>
+        <div class="project-links">
+            <a href="#" class="project-link">Live Demo</a>
+            <a href="#" class="project-link">GitHub</a>
+        </div>
+    </div>
+</div>
+
+<div class="project-card" onclick="openModal('project14')">
+    <div class="project-image">
+        <img src="https://miro.medium.com/v2/resize:fit:1358/format:webp/0*MwqEsP6YWzxVmaPT.gif"
+        alt="RAG Applications" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+    <div class="project-content">
+        <h3>Generative AI Applications with RAG & LangChain</h3>
+        <p class="project-description">Architected advanced RAG applications with LangChain, building QA bots and Gradio interfaces for real-time AI capabilities.</p>
+        <div class="project-tech">
+            <span class="tech-tag">RAG</span>
+            <span class="tech-tag">LangChain</span>
+            <span class="tech-tag">Vector DB</span>
+            <span class="tech-tag">Gradio</span>
+        </div>
+        <div class="project-links">
+            <a href="#" class="project-link">Live Demo</a>
+            <a href="#" class="project-link">GitHub</a>
+        </div>
+    </div>
+</div>
+
+<div class="project-card" onclick="openModal('project15')">
+    <div class="project-image">
+        <img src="https://discourse-uploads.bokeh.org/original/2X/0/0f3ddbd67319efb01dcf93b9b91ae33c6124523a.gif"
+        alt="ML Engineering Portfolio" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+    <div class="project-content">
+        <h3>Advanced Machine Learning Engineering Portfolio</h3>
+        <p class="project-description">Comprehensive ML suite covering fraud detection, customer segmentation, and regression forecasting with production-ready pipelines.</p>
+        <div class="project-tech">
+            <span class="tech-tag">MLOps</span>
+            <span class="tech-tag">Scikit-learn</span>
+            <span class="tech-tag">DBSCAN</span>
+            <span class="tech-tag">Model Evaluation</span>
+        </div>
+        <div class="project-links">
+            <a href="#" class="project-link">Live Demo</a>
+            <a href="#" class="project-link">GitHub</a>
+        </div>
+    </div>
+</div>
+
             </div>
+
+
             <button class="gallery-nav gallery-nav-right" onclick="scrollProjects('right')">
                 <i class="fas fa-chevron-right"></i>
             </button>
         </div>
-        <div class="gallery-nav-container">
+
+         <div class="gallery-nav-container">
             <button class="gallery-nav" onclick="scrollProjects('left')" ontouchstart="scrollProjects('left')">
                 <i class="fas fa-chevron-left"></i>
             </button>
@@ -1926,6 +2032,12 @@
                 <div class="gallery-item">
                     <img src="https://ik.imagekit.io/qypbatx8h/RayenAmeur.jpeg?updatedAt=1757728242042" alt="Member">
                     <div class="gallery-description">I believe in taking action and creating real impact.</div>
+
+                </div>
+
+                <div class="gallery-item">
+                    <img src="https://ik.imagekit.io/ucv0td5oa/image.png" alt="Member">
+                    <div class="gallery-description">Edugate is present on university campuses and making an impact! </div>
 
                 </div>
 
